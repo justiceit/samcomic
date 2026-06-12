@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shinigami no Koe - Samcomic</title>
+  <title>Samcomic</title>
   <link rel="icon" href="logo/sc_logo.ico">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,12 +16,12 @@
 
     <!-- NAVBAR -->
     <header class="top-bar">
-      <a class="site-logo" href="index.html">
+      <a class="site-logo" href="/">
         <img src="logo/sc_logo.ico" alt="Samcomic logo" id="logoImg">
         <span class="site-logo-fallback" id="logoFallback">SC</span>
       </a>
       <nav class="nav-links">
-        <a href="index.html">Trang chủ</a>
+        <a href="/">Trang chủ</a>
         <a href="#">Thể loại</a>
         <a href="#">Top manga</a>
         <a href="#">Lịch sử</a>
@@ -35,51 +35,45 @@
     <!-- HERO -->
     <section class="hero">
       <div class="hero-cover">
-        <div class="cover-art">
+        <div class="cover-art" id="coverArt">
           <div class="cover-spine"></div>
-          <div class="cover-kanji-big">鬼</div>
-          <div class="cover-sub">SHINIGAMI</div>
+          <div class="cover-kanji-big" id="coverKanji"></div>
+          <div class="cover-sub" id="coverSub"></div>
         </div>
       </div>
       <div class="hero-info">
-        <h1 class="manga-title">Shinigami no Koe</h1>
-        <p class="manga-alt">声の死神 · Voice of the Death God</p>
-        <div class="tags">
-          <span class="tag t-action">Shounen</span>
-          <span class="tag t-action">Action</span>
-          <span class="tag t-genre">Supernatural</span>
-          <span class="tag t-genre">Adventure</span>
-          <span class="tag t-demo">Dark Fantasy</span>
-        </div>
+        <h1 class="manga-title" id="mangaTitle"></h1>
+        <p class="manga-alt" id="mangaAlt"></p>
+        <div class="tags" id="mangaTags"></div>
         <div class="meta-grid">
           <div class="meta-item">
             <span class="meta-label">Tác giả</span>
-            <span class="meta-val">Kurosawa Ren</span>
+            <span class="meta-val" id="metaAuthor"></span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Họa sĩ</span>
-            <span class="meta-val">Miyamoto Sora</span>
+            <span class="meta-val" id="metaArtist"></span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Nhà xuất bản</span>
-            <span class="meta-val">Shonen Jump</span>
+            <span class="meta-val" id="metaPublisher"></span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Trạng thái</span>
-            <span class="status-badge">
-              <span class="status-dot"></span>Đang tiến hành
+            <span class="status-badge" id="metaStatus">
+              <span class="status-dot"></span><span id="metaStatusText"></span>
             </span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Số chương</span>
-            <span class="meta-val">187 chương</span>
+            <span class="meta-val" id="metaChapters"></span>
           </div>
           <div class="meta-item">
             <span class="meta-label">Năm phát hành</span>
-            <span class="meta-val">2019</span>
+            <span class="meta-val" id="metaYear"></span>
           </div>
         </div>
-        <p class="desc-text">Trong thế giới nơi linh hồn và con người giao nhau, một chàng trai mang năng lực kỳ bí có thể nghe được tiếng vọng từ cõi chết. Hành trình của anh bắt đầu khi một thần chết cổ đại chọn anh làm người kế thừa sức mạnh đã bị phong ấn hàng nghìn năm...</p>
+        <p class="desc-text" id="mangaDesc"></p>
         <div class="btn-row">
           <button class="btn-p"><i class="ti ti-player-play" aria-hidden="true"></i> Đọc ngay</button>
           <button class="btn-o"><i class="ti ti-bookmark" aria-hidden="true"></i> Theo dõi</button>
@@ -90,11 +84,11 @@
 
     <!-- STATS BAR -->
     <div class="stats-bar">
-      <div class="stat"><i class="ti ti-book-2" aria-hidden="true"></i><b>187</b> chương</div>
-      <div class="stat"><i class="ti ti-eye" aria-hidden="true"></i><b>12.4M</b> lượt xem</div>
-      <div class="stat"><i class="ti ti-heart" aria-hidden="true"></i><b>284K</b> yêu thích</div>
-      <div class="stat"><i class="ti ti-star" aria-hidden="true"></i><b>9.2</b> / 10</div>
-      <div class="stat"><i class="ti ti-clock" aria-hidden="true"></i>Cập nhật <b>2 ngày trước</b></div>
+      <div class="stat"><i class="ti ti-book-2" aria-hidden="true"></i><b id="statChapters"></b> chương</div>
+      <div class="stat"><i class="ti ti-eye" aria-hidden="true"></i><b id="statViews"></b> lượt xem</div>
+      <div class="stat"><i class="ti ti-heart" aria-hidden="true"></i><b id="statFavorites"></b> yêu thích</div>
+      <div class="stat"><i class="ti ti-star" aria-hidden="true"></i><b id="statRating"></b> / 10</div>
+      <div class="stat"><i class="ti ti-clock" aria-hidden="true"></i>Cập nhật <b id="statUpdated"></b></div>
     </div>
 
     <!-- CHAPTER LIST -->
