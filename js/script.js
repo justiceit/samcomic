@@ -1,29 +1,9 @@
 // ===========================
-//  DATA
-// ===========================
-const chapters = [
-  { num: 187, title: "Lời thì thầm cuối cùng",              date: "03/06/2026", views: "48K",  isNew: true  },
-  { num: 186, title: "Ranh giới giữa hai thế giới",          date: "27/05/2026", views: "71K",  isNew: true  },
-  { num: 185, title: "Kẻ phản bội trong bóng tối",           date: "20/05/2026", views: "89K",  isNew: false },
-  { num: 184, title: "Ngọn lửa thanh tẩy",                   date: "13/05/2026", views: "95K",  isNew: false },
-  { num: 183, title: "Di sản của Shinigami đầu tiên",        date: "06/05/2026", views: "102K", isNew: false },
-  { num: 182, title: "Hợp đồng máu",                         date: "29/04/2026", views: "88K",  isNew: false },
-  { num: 181, title: "Đêm không trăng",                      date: "22/04/2026", views: "76K",  isNew: false },
-  { num: 180, title: "Cổng địa ngục mở ra",                  date: "15/04/2026", views: "93K",  isNew: false },
-  { num: 179, title: "Tiếng gọi từ cõi âm",                  date: "08/04/2026", views: "81K",  isNew: false },
-  { num: 178, title: "Kiếm ma hiện hình",                    date: "01/04/2026", views: "87K",  isNew: false },
-  { num: 177, title: "Người canh gác linh hồn",              date: "25/03/2026", views: "79K",  isNew: false },
-  { num: 176, title: "Bức tường giữa sự sống và cái chết",   date: "18/03/2026", views: "84K",  isNew: false },
-  { num: 175, title: "Ký ức bị phong ấn",                    date: "11/03/2026", views: "91K",  isNew: false },
-  { num: 174, title: "Sức mạnh thức tỉnh",                   date: "04/03/2026", views: "97K",  isNew: false },
-  { num: 173, title: "Trận chiến dưới vực thẳm",             date: "25/02/2026", views: "88K",  isNew: false },
-];
-
-// ===========================
 //  STATE
 // ===========================
-let sortAsc     = false;
+let sortAsc = false;
 let currentQuery = '';
+let chaptersData = [];
 
 // ===========================
 //  RENDER
@@ -53,11 +33,10 @@ function renderChapters(list) {
 //  FILTER & SORT
 // ===========================
 function applySort() {
-  const filtered = chapters.filter(c =>
+  const filtered = chaptersData.filter(c =>
     c.title.toLowerCase().includes(currentQuery.toLowerCase()) ||
     String(c.num).includes(currentQuery)
   );
-
   filtered.sort((a, b) => sortAsc ? a.num - b.num : b.num - a.num);
   renderChapters(filtered);
 }
@@ -73,9 +52,7 @@ function toggleTheme() {
 
 function loadTheme() {
   const saved = localStorage.getItem('manga-theme');
-  if (saved) {
-    document.getElementById('app').dataset.theme = saved;
-  }
+  if (saved) document.getElementById('app').dataset.theme = saved;
 }
 
 // ===========================
@@ -84,9 +61,8 @@ function loadTheme() {
 function initLogo() {
   const img      = document.getElementById('logoImg');
   const fallback = document.getElementById('logoFallback');
-
   img.addEventListener('error', () => {
-    img.style.display     = 'none';
+    img.style.display      = 'none';
     fallback.style.display = 'block';
   });
 }
@@ -97,23 +73,47 @@ function initLogo() {
 document.addEventListener('DOMContentLoaded', () => {
   loadTheme();
   initLogo();
-
-  // Search
-  document.getElementById('chapSearch').addEventListener('input', (e) => {
-    currentQuery = e.target.value;
-    applySort();
-  });
-
-  // Sort toggle
-  document.getElementById('sortBtn').addEventListener('click', () => {
-    sortAsc = !sortAsc;
-    document.getElementById('sortLabel').textContent = sortAsc ? 'Cũ nhất' : 'Mới nhất';
-    applySort();
-  });
-
-  // Theme toggle
   document.getElementById('toggleBtn').addEventListener('click', toggleTheme);
 
-  // Initial render
-  applySort();
+  const slug = new URLSearchParams(window.location.search).get('slug');
+
+  fetch(`/api/title?slug=${slug}`)
+    .then(r => r.json())
+    .then(data => {
+      const { manga, chapters } = data;
+
+      // Cập nhật thông tin manga
+      document.title = `${manga.title} - Samcomic`;
+      document.querySelector('.manga-title').textContent = manga.title;
+      document.querySelector('.manga-alt').textContent = manga.kanji || '';
+      document.querySelector('.desc-text').textContent = manga.description || '';
+
+      // Map chapters
+      chaptersData = chapters.map(c => ({
+        num: c.chapter_num,
+        title: c.title,
+        date: new Date(c.published_at).toLocaleDateString('vi-VN'),
+        views: c.views >= 1000 ? (c.views / 1000).toFixed(0) + 'K' : String(c.views),
+        isNew: (new Date() - new Date(c.published_at)) / 86400000 <= 7
+      }));
+
+      applySort();
+
+      // Search
+      document.getElementById('chapSearch').addEventListener('input', (e) => {
+        currentQuery = e.target.value;
+        applySort();
+      });
+
+      // Sort toggle
+      document.getElementById('sortBtn').addEventListener('click', () => {
+        sortAsc = !sortAsc;
+        document.getElementById('sortLabel').textContent = sortAsc ? 'Cũ nhất' : 'Mới nhất';
+        applySort();
+      });
+    })
+    .catch(err => {
+      console.error(err);
+      document.getElementById('chapList').innerHTML = '<div class="empty-msg">Lỗi tải dữ liệu</div>';
+    });
 });
