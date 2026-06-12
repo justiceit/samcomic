@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
           ? (m.views / 1000000).toFixed(1) + 'M'
           : m.views >= 1000 ? (m.views / 1000).toFixed(0) + 'K' : String(m.views),
         isNew: m.update_days <= 7,
-        url: `title.html?slug=${m.url_slug}`
+        url: `title?slug=${m.url_slug}`
       }));
 
       renderGrid(mangaList);
