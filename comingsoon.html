@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Samcomic - Chức năng đang phát triển</title>
+    <!-- Nhúng Font Google để đồng bộ font chữ hiện đại -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+        }
+
+        body {
+            /* Sử dụng màu đen với độ mờ 80% (0.8) */
+            background-color: rgba(13, 14, 18, 0.8);
+
+            /* Giữ nguyên các thuộc tính căn giữa nội dung */
+            color: #ffffff;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* Chữ Hán mờ làm background nghệ thuật đồng bộ với trang chủ */
+        .bg-text {
+            position: absolute;
+            font-size: 18vw;
+            font-weight: 800;
+            color: rgba(255, 255, 255, 0.02);
+            z-index: 1;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .container {
+            text-align: center;
+            z-index: 2;
+            padding: 20px;
+            max-width: 600px;
+        }
+
+        /* Hiệu ứng hoạt họa cho Icon / Logo */
+        .icon-box {
+            font-size: 64px;
+            margin-bottom: 24px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            background: linear-gradient(45deg, #ff7e5f, #feb47b);
+            /* Hiệu ứng màu chữ gradient nổi bật */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        p {
+            font-size: 1.1rem;
+            color: #94a3b8;
+            line-height: 1.6;
+            margin-bottom: 32px;
+        }
+
+        /* Nút quay lại trang chủ */
+        .btn-home {
+            display: inline-block;
+            padding: 12px 32px;
+            background: linear-gradient(135deg, #6366f1, #4f46e5);
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 4px 15px rgba(99, 102, 241, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .btn-home:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(99, 102, 241, 0.6);
+            opacity: 0.9;
+        }
+
+        /* Animation bay bổng cho icon */
+        @keyframes float {
+            0% {
+                transform: translateY(0px);
+            }
+
+            50% {
+                transform: translateY(-15px);
+            }
+
+            100% {
+                transform: translateY(0px);
+            }
+        }
+
+        /* Responsive cho điện thoại */
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            .btn-home {
+                padding: 10px 24px;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Chữ Manga mờ làm nền giống phong cách trang chủ của bạn -->
+    <div class="bg-text">SamComic</div>
+
+    <div class="container">
+        <div class="icon-box">🚀</div>
+        <h1>Tính Năng Đang Phát Triển</h1>
+        <p>Tính năng này hiện đang được Samcomic hoàn thiện và tối ưu hệ thống dữ liệu. Vui lòng quay lại sau nhé, kho
+            truyện hấp dẫn sẽ sớm ra mắt!</p>
+
+        <!-- Đường dẫn quay lại trang chủ (index.html hoặc thay bằng "/" nếu deploy trên Vercel) -->
+        <a href="index.html" class="btn-home">Quay lại Trang Chủ</a>
+    </div>
+
+</body>
+
+</html>
