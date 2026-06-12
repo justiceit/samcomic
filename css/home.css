@@ -1,0 +1,304 @@
+/* ===========================
+   NAV ACTIVE STATE
+=========================== */
+.nav-links a.active {
+  color: var(--accent);
+  border-bottom: 2px solid var(--accent);
+  padding-bottom: 2px;
+}
+
+/* ===========================
+   BANNER
+=========================== */
+.home-banner {
+  background: linear-gradient(135deg, var(--cover-from) 0%, var(--cover-to) 100%);
+  padding: 48px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 1px solid var(--border);
+}
+
+.home-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 30px,
+    rgba(255,255,255,0.025) 30px,
+    rgba(255,255,255,0.025) 31px
+  );
+}
+
+.banner-text {
+  position: relative;
+  z-index: 1;
+}
+
+.banner-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.banner-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 48px;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: 4px;
+  line-height: 1;
+  margin-bottom: 12px;
+}
+
+.banner-desc {
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  letter-spacing: 0.5px;
+}
+
+.banner-deco {
+  display: flex;
+  gap: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.banner-deco span {
+  font-size: 72px;
+  font-weight: 700;
+  color: rgba(255,255,255,0.07);
+  line-height: 1;
+  user-select: none;
+  font-family: 'Noto Serif JP', serif;
+}
+
+/* ===========================
+   SECTION HEADER
+=========================== */
+.manga-section {
+  padding: 24px 24px 40px;
+}
+
+.section-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.section-title {
+  font-family: 'Oswald', sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: 1.5px;
+  position: relative;
+  padding-left: 12px;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 2px;
+  bottom: 2px;
+  width: 3px;
+  background: var(--accent);
+  border-radius: 2px;
+}
+
+/* Filter buttons */
+.filter-row {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.filter-btn {
+  font-size: 11px;
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 1px solid var(--border);
+  background: transparent;
+  color: var(--text2);
+  cursor: pointer;
+  font-family: 'Noto Serif JP', serif;
+  letter-spacing: 0.5px;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.filter-btn.active {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+}
+
+/* ===========================
+   MANGA GRID
+=========================== */
+.manga-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(155px, 1fr));
+  gap: 20px;
+}
+
+/* CARD */
+.manga-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
+}
+
+.manga-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent);
+}
+
+/* Cover */
+.card-cover {
+  width: 100%;
+  aspect-ratio: 2/3;
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.card-cover-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.3s;
+}
+
+.manga-card:hover .card-cover-img {
+  transform: scale(1.05);
+}
+
+/* Placeholder cover khi không có ảnh */
+.card-cover-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+.card-cover-kanji {
+  font-size: 48px;
+  color: rgba(255,255,255,0.15);
+  font-family: 'Noto Serif JP', serif;
+  line-height: 1;
+  user-select: none;
+}
+
+.card-cover-name {
+  font-size: 9px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Badge mới */
+.card-badge-new {
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  font-size: 9px;
+  padding: 2px 7px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 2px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-family: 'Oswald', sans-serif;
+}
+
+/* Chapter mới nhất overlay */
+.card-latest {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 4px 8px;
+  background: rgba(0,0,0,0.65);
+  font-size: 10px;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 0.5px;
+}
+
+/* Card info */
+.card-info {
+  padding: 10px 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card-title {
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text);
+  line-height: 1.4;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.card-tag {
+  font-size: 9px;
+  padding: 2px 7px;
+  border-radius: 2px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.card-tag.t-action  { background: var(--tag-action-bg);  color: var(--tag-action-text); }
+.card-tag.t-genre   { background: var(--tag-genre-bg);   color: var(--tag-genre-text);  }
+.card-tag.t-demo    { background: var(--tag-demo-bg);    color: var(--tag-demo-text);   }
+
+.card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+.card-meta i {
+  font-size: 12px;
+  vertical-align: -1px;
+}

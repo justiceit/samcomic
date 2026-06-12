@@ -1,0 +1,10 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/trang-chu", "destination": "/index.html" },
+    {"source": "/tieu-de", "destination": "/title.html" },
+    { "source": "/the-loai",  "destination": "/the-loai.html" },
+    { "source": "/top-manga", "destination": "/top-manga.html" },
+    { "source": "/lich-su",   "destination": "/lich-su.html" }
+  ]
+}

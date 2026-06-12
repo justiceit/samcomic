@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Samcomic - Đọc Manga Online</title>
+  <link rel="icon" href="logo/sc_logo.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/home.css">
+</head>
+<body>
+  <div class="manga-app" data-theme="light" id="app">
+
+    <!-- NAVBAR -->
+    <header class="top-bar">
+      <a class="site-logo" href="home">
+        <img src="logo/sc_logo.ico" alt="Samcomic logo" id="logoImg">
+        <span class="site-logo-fallback" id="logoFallback">SC</span>
+      </a>
+      <nav class="nav-links">
+        <a href="home" class="active">Trang chủ</a>
+        <a href="#">Thể loại</a>
+        <a href="#">Top manga</a>
+        <a href="#">Lịch sử</a>
+      </nav>
+      <button class="toggle-btn" id="toggleBtn" aria-label="Chuyển chế độ sáng/tối">
+        <i class="ti ti-sun icon-sun" aria-hidden="true"></i>
+        <i class="ti ti-moon icon-moon" aria-hidden="true"></i>
+      </button>
+    </header>
+
+    <!-- BANNER -->
+    <section class="home-banner">
+      <div class="banner-text">
+        <p class="banner-sub">Chào mừng đến với</p>
+        <h1 class="banner-title">SAMCOMIC</h1>
+        <p class="banner-desc">Kho manga khổng lồ — đọc miễn phí, cập nhật mỗi ngày</p>
+      </div>
+      <div class="banner-deco" aria-hidden="true">
+        <span>漫</span><span>画</span><span>本</span>
+      </div>
+    </section>
+
+    <!-- MANGA LIST -->
+    <section class="manga-section">
+      <div class="section-header">
+        <h2 class="section-title">Mới cập nhật</h2>
+        <div class="filter-row">
+          <button class="filter-btn active" data-genre="all">Tất cả</button>
+          <button class="filter-btn" data-genre="Action">Action</button>
+          <button class="filter-btn" data-genre="Romance">Romance</button>
+          <button class="filter-btn" data-genre="Supernatural">Supernatural</button>
+          <button class="filter-btn" data-genre="Fantasy">Fantasy</button>
+        </div>
+      </div>
+
+      <div class="manga-grid" id="mangaGrid"></div>
+    </section>
+
+  </div>
+
+  <script src="js/home.js"></script>
+</body>
+</html>
