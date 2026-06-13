@@ -67,23 +67,23 @@ document.addEventListener('DOMContentLoaded', () => {
     fetch(`/api/reader?chapter_id=${chapterId}`)
         .then(r => r.json())
         .then(data => {
-    const slug = params.get('slug');
-    document.getElementById('backBtn').addEventListener('click', () => {
-        window.location.href = `title?slug=${slug}`;
-    });
+            const slug = params.get('slug');
+            document.getElementById('backBtn').addEventListener('click', () => {
+                window.location.href = `title?slug=${slug}`;
+            });
 
-    if (!data || !data.length || data.error) {
-        document.getElementById('scrollPages').innerHTML = '<p style="color:white;text-align:center;padding:40px">Chương này chưa có nội dung</p>';
-        return;
-    }
+            if (!data || !data.length || data.error) {
+                document.getElementById('scrollPages').innerHTML = '<p style="color:white;text-align:center;padding:40px">Chương này chưa có nội dung</p>';
+                return;
+            }
 
-    pages = data;
-    const first = data[0];
-    document.title = `Chap ${first.chapter_num} - ${first.manga_title} - Samcomic`;
-    document.getElementById('mangaTitleNav').textContent = first.manga_title;
-    document.getElementById('chapterNav').textContent = `Chap ${first.chapter_num}${first.chapter_title ? ' — ' + first.chapter_title : ''}`;
-    renderScrollMode();
-    setMode(savedMode);
-})
+            pages = data;
+            const first = data[0];
+            document.title = `Chap ${first.chapter_num} - ${first.manga_title} - Samcomic`;
+            document.getElementById('mangaTitleNav').textContent = first.manga_title;
+            document.getElementById('chapterNav').textContent = `Chap ${first.chapter_num}${first.chapter_title ? ' — ' + first.chapter_title : ''}`;
+            renderScrollMode();
+            setMode(savedMode);
+        })
         .catch(err => console.error(err));
 });
