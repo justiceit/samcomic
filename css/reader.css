@@ -1,0 +1,86 @@
+/* ─── READER BAR ─────────────────────────── */
+.reader-bar {
+  position: sticky; top: 0; z-index: 100;
+  background: var(--ink, #0e0e12);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  padding: 0 20px;
+  height: 52px;
+  display: flex; align-items: center; gap: 16px;
+}
+.reader-back {
+  display: flex; align-items: center; gap: 6px;
+  color: rgba(255,255,255,0.7);
+  text-decoration: none; font-size: 13px;
+  flex-shrink: 0;
+}
+.reader-back:hover { color: #fff; }
+.reader-chapter {
+  flex: 1; text-align: center;
+  font-size: 13px; color: rgba(255,255,255,0.6);
+}
+.reader-controls {
+  display: flex; align-items: center; gap: 8px;
+}
+.mode-btn {
+  width: 34px; height: 34px;
+  border-radius: 6px; border: 1px solid rgba(255,255,255,0.12);
+  background: transparent; color: rgba(255,255,255,0.5);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  font-size: 16px; transition: all 0.15s;
+}
+.mode-btn:hover { background: rgba(255,255,255,0.08); color: #fff; }
+.mode-btn.active { background: var(--accent, #d94f2b); border-color: var(--accent, #d94f2b); color: #fff; }
+
+/* ─── SCROLL MODE ────────────────────────── */
+.reader-scroll {
+  min-height: calc(100vh - 52px);
+}
+.scroll-pages {
+  max-width: 800px;
+  margin: 0 auto;
+  display: flex; flex-direction: column;
+}
+.scroll-pages img {
+  width: 100%; display: block;
+}
+
+/* ─── PAGE MODE ──────────────────────────── */
+.reader-page {
+  height: calc(100vh - 52px);
+  display: flex; align-items: center; justify-content: center;
+  position: relative; overflow: hidden;
+}
+.page-viewer {
+  height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  padding: 0 60px;
+}
+.page-img {
+  max-height: 100%; max-width: 100%;
+  object-fit: contain;
+}
+.nav-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px;
+  border-radius: 50%; border: 1px solid var(--border-2, rgba(14,14,18,0.16));
+  background: rgba(255,255,255,0.9);
+  color: var(--ink, #0e0e12);
+  cursor: pointer; font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  transition: all 0.15s; z-index: 10;
+}
+.nav-arrow:hover { background: #fff; box-shadow: 0 4px 12px rgba(0,0,0,0.15); }
+.nav-prev { left: 12px; }
+.nav-next { right: 12px; }
+.nav-arrow:disabled { opacity: 0.3; cursor: default; }
+.page-counter {
+  position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
+  background: rgba(0,0,0,0.6); color: #fff;
+  padding: 4px 14px; border-radius: 20px;
+  font-size: 12px;
+}
+
+/* ─── DARK MODE ──────────────────────────── */
+[data-theme="dark"] .reader-page { background: #111; }
+[data-theme="dark"] .nav-arrow { background: rgba(40,40,40,0.9); color: #fff; border-color: rgba(255,255,255,0.1); }
+[data-theme="dark"] .nav-arrow:hover { background: #333; }

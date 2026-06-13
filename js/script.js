@@ -4,6 +4,7 @@
 let sortAsc = false;
 let currentQuery = '';
 let chaptersData = [];
+let currentSlug = '';
 
 // ===========================
 //  RENDER CHAPTERS
@@ -17,7 +18,7 @@ function renderChapters(list) {
   }
 
   el.innerHTML = list.map(c => `
-    <a class="chapter-item${c.isNew ? ' is-new' : ''}" href="#">
+    <a class="chapter-item${c.isNew ? ' is-new' : ''}" href="reader?chapter_id=${c.id}&slug=${currentSlug}">
       <span class="chap-num">Chap ${c.num}</span>
       <span class="chap-title">${c.title}</span>
       ${c.isNew ? '<span class="chap-new">New</span>' : ''}
@@ -107,6 +108,7 @@ document.addEventListener('DOMContentLoaded', () => {
   document.getElementById('toggleBtn').addEventListener('click', toggleTheme);
 
   const slug = new URLSearchParams(window.location.search).get('slug');
+  currentSlug = slug;
 
   fetch(`/api/title?slug=${slug}`)
     .then(r => r.json())
@@ -161,7 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
         title: c.title,
         date: new Date(c.published_at).toLocaleDateString('vi-VN'),
         views: formatViews(c.views),
-        isNew: (new Date() - new Date(c.published_at)) / 86400000 <= 7
+        isNew: (new Date() - new Date(c.published_at)) / 86400000 <= 7,
+        id: c.id
       }));
 
       applySort();

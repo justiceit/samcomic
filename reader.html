@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Đọc truyện - Samcomic</title>
+  <link rel="icon" href="logo/sc_logo.ico">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&family=Noto+Serif+JP:wght@300;400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/reader.css">
+</head>
+<body>
+  <div class="manga-app" data-theme="light" id="app">
+
+    <!-- READER TOPBAR -->
+    <header class="reader-bar">
+      <a class="reader-back" id="backBtn" href="#">
+        <i class="ti ti-arrow-left"></i>
+        <span id="mangaTitleNav">Quay lại</span>
+      </a>
+      <div class="reader-chapter" id="chapterNav"></div>
+      <div class="reader-controls">
+        <button class="mode-btn active" id="modeScroll" title="Cuộn dọc">
+          <i class="ti ti-layout-list"></i>
+        </button>
+        <button class="mode-btn" id="modePage" title="Lật trang">
+          <i class="ti ti-book"></i>
+        </button>
+        <button class="toggle-btn" id="toggleBtn">
+          <i class="ti ti-sun icon-sun"></i>
+          <i class="ti ti-moon icon-moon"></i>
+        </button>
+      </div>
+    </header>
+
+    <!-- SCROLL MODE -->
+    <div class="reader-scroll" id="readerScroll">
+      <div class="scroll-pages" id="scrollPages"></div>
+    </div>
+
+    <!-- PAGE MODE -->
+    <div class="reader-page" id="readerPage" style="display:none">
+      <button class="nav-arrow nav-prev" id="prevBtn">
+        <i class="ti ti-chevron-left"></i>
+      </button>
+      <div class="page-viewer">
+        <img class="page-img" id="pageImg" src="" alt="">
+      </div>
+      <button class="nav-arrow nav-next" id="nextBtn">
+        <i class="ti ti-chevron-right"></i>
+      </button>
+      <div class="page-counter" id="pageCounter"></div>
+    </div>
+
+  </div>
+  <script src="js/reader.js"></script>
+</body>
+</html>
