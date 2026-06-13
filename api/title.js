@@ -36,7 +36,7 @@ export default async function handler(req, res) {
       FROM sc_chapters
       WHERE manga_id = $1
       ORDER BY chapter_num DESC
-    `, [manga[0].id]);
+    `, [parseInt(manga[0].id)]);
 
     res.status(200).json({ manga: manga[0], chapters });
   } catch (err) {
