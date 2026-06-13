@@ -31,19 +31,12 @@ export default async function handler(req, res) {
     if (!manga.length) return res.status(404).json({ error: 'Manga not found' });
 
     // Lấy danh sách chapter
-    // const { rows: chapters } = await pool.query(`
-    //   SELECT id, chapter_num, title, views, published_at
-    //   FROM sc_chapters
-    //   WHERE manga_id = $1
-    //   ORDER BY chapter_num DESC
-    // `, [parseInt(manga[0].id)]);
-
     const { rows: chapters } = await pool.query(`
-  SELECT id, chapter_num, title, views, published_at
-  FROM sc_chapters
-  ORDER BY chapter_num DESC
-  LIMIT 10
-`);
+      SELECT id, chapter_num, title, views, published_at
+      FROM sc_chapters
+      WHERE manga_id = $1
+      ORDER BY chapter_num DESC
+    `, [parseInt(manga[0].id)]);
 
     res.status(200).json({ manga: manga[0], chapters });
   } catch (err) {
